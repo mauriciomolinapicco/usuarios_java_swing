@@ -15,7 +15,7 @@ public class UsuarioTableModel extends AbstractTableModel {
 	private String[] nombreColumnas = {"Login", "Nombre", "Email", "Dni"};
 	
 	//Tipos de cada columna
-	private Class[] tiposColumnas = {String.class, String.class, String.class, Integer.class};s
+	private Class[] tiposColumnas = {String.class, String.class, String.class, Integer.class};
 	
 	//contenido = valores de la tabla
 	private List<Usuario> contenido;
@@ -42,6 +42,11 @@ public class UsuarioTableModel extends AbstractTableModel {
 		return nombreColumnas[col];
 	}
 	
+
+	public Class getColumnClass(int col) {
+		return tiposColumnas[col];
+	}
+	
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Usuario u = contenido.get(rowIndex);
 		
@@ -65,10 +70,14 @@ public class UsuarioTableModel extends AbstractTableModel {
 		return result;
 	}
 	
-	
-	
-	
-	public Class getColumnClass(int col) {
-		return tiposColumnas[col];
+	public List<Usuario> getContenido() {
+		return contenido;
 	}
+	
+	public void setContenido(List<Usuario> contenido) {
+		this.contenido = contenido;
+	}
+	
+	
+	
 }
